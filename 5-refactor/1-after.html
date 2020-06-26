@@ -2,20 +2,63 @@
 <html lang='en'>
 
 <head>
-  <meta charset="utf8">
-  <title>after refactor: 1</title>
+    <meta charset="utf8">
+    <title>after refactor: 1</title>
 
-  <style> </style>
+    <style>
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 
-  <script id='logic'> </script>
+    <script id='logic'>
+        /**
+         * shuffles 3 parametres
+         * @param {string} first
+         * @param {string} second
+         * @param {string} third
+         * @returns {string}
+         */
+        function shuffle(first, second, third) {
+            return `${second}, ${first}, ${third}`;
+        }
+    </script>
 
-  <script id='tests'></script>
+    <script id='tests'>
+        console.log('testing: shuffle ');
+        debugger;
 
-  <script id=' handler'></script>
+        const _1_expect = 'b, a, c';
+        const _1_actual = shuffle('a', 'b', 'c');
+        console.assert(_1_actual === _1_expect, 'Test 1');
+    </script>
+
+    <script id=' handler'>
+        function shuffleHandler() {
+            const first = prompt('Enter first arg:');
+            const second = prompt('Enter second arg:');
+            const third = prompt('Enter third arg:');
+            const res = shuffle(first, second, third);
+            alert(`Result string: ${res}`);
+
+            console.log('-- interaction log --');
+            console.log('first:', typeof first, '\n', first);
+            console.log('second:', typeof second, '\n', second);
+            console.log('third:', typeof third, '\n', third);
+            console.log('shuffle:', typeof res, '\n', res);
+        }
+    </script>
 </head>
 
 <body>
-  <section id='user-interface' class='centered'></section>
+    <section id='user-interface' class='centered'>
+
+        <button onclick='shuffleHandler()'>Shuffle three argument</button>
+
+    </section>
 </body>
 
 </html>
